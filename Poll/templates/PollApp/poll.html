@@ -1,174 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anket Formu</title>
-    <link rel="stylesheet" href="../../static/PollApp/styles.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>İdrar Kültürü Anket Formu</h1>
-      <form action="http://127.0.0.1:8000/Poll/Save/" method="post">
-        <div class="question">
-          <label for="id">Laboratuvar barkodu:</label>
-          <input type="text" name="id" id="id" required />
-        </div>
 
-        <div class="question">
-          <label for="name">Hasta adı soyadı:</label>
-          <input type="text" name="name" id="name" required />
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anket Formu</title>
+  <link rel="stylesheet" href="../../static/PollApp/styles.css" />
+</head>
 
-        <div class="question">
-          <label for="gender">Cinsiyet:</label>
-          <select name="gender" id="gender" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Kadın">KADIN</option>
-            <option value="Erkek">ERKEK</option>
-          </select>
-        </div>
+<body>
+  <div id="successMessage"
+    style="display: none; background-color: #4CAF50; color: white; padding: 10px; text-align: center; margin-bottom: 10px;">
+    Kayıt başarıyla yapıldı!</div>
+  <div id="control" style="display: none;">{{ process_result }}</div>
+  <div class="container">
+    <h1>İdrar Kültürü Anket Formu</h1>
+    <form action="http://127.0.0.1:8000/Poll/Save/" method="post">
+      <div class="question">
+        <label for="id">Laboratuvar barkodu:</label>
+        <input type="text" name="id" id="id" required />
+      </div>
 
-        <div class="question">
-          <label for="old">Yaş:</label>
-          <input type="text" name="old" id="old" required />
-        </div>
+      <div class="question">
+        <label for="name">Hasta adı soyadı:</label>
+        <input type="text" name="name" id="name" required />
+      </div>
 
-        <div class="question">
-          <label for="question1"
-            >Soru 1: İdrar örneğini nasıl vereceğiniz hastane personeli
-            tarafından anlatıldı mı?</label
-          >
-          <select name="question1" id="question1" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
+      <div class="question">
+        <label for="gender">Cinsiyet:</label>
+        <select name="gender" id="gender" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Kadın">KADIN</option>
+          <option value="Erkek">ERKEK</option>
+        </select>
+      </div>
 
-        <div class="question">
-          <label for="question2"
-            >Soru 2: Orta akım idrar kültürü için sabah ilk idrar örneği veya
-            mümkünse mesanede en az 2 saat beklemiş idrar örneği tercih edilmesi
-            gerektiğini biliyor musunuz?</label
-          >
-          <select name="question2" id="question2" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
+      <div class="question">
+        <label for="old">Yaş:</label>
+        <input type="number" name="old" id="old" required />
+      </div>
 
-        <div class="question">
-          <label for="question3"
-            >Soru 3: Orta akım idrar kültürü için sabah ilk idrar örneği veya
-            mümkünse mesanede en az 2 saat beklemiş idrar örneği tercih ettiniz
-            mi?</label
-          >
-          <select name="question3" id="question3" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
+      <div class="question">
+        <label for="question1">Soru 1: İdrar örneğini nasıl vereceğiniz hastane personeli tarafından
+          anlatıldımı?</label>
+        <select name="question1" id="question1" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
 
-        <div class="question">
-          <label for="question4"
-            >Soru 4: İdrar örneğini vermeden önce ellerin sabunla yıkanması
-            gerektiğini biliyor musunuz?</label
-          >
-          <select name="question4" id="question4" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
+      <div class="question">
+        <label for="question2">Soru 2: Orta akım idrar kültürü için sabah ilk idrar örneği veya mümkünse mesanede en az
+          2 saat beklemiş idrar örneği tercih edilmesi gerektiğini biliyor musunuz?</label>
+        <select name="question2" id="question2" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
 
-        <div class="question">
-          <label for="question5"
-            >Soru 5: İdrar örneğini vermeden önce ellerinizi sabunla yıkadınız
-            mı?</label
-          >
-          <select name="question5" id="question5" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
+      <div class="question">
+        <label for="question3">Soru 3: Orta akım idrar kültürü için sabah ilk idrar örneği veya mümkünse mesanede en az
+          2 saat beklemiş idrar örneği tercih ettiniz mi?</label>
+        <select name="question3" id="question3" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
 
-        <div class="question">
-          <label for="question6"
-            >Soru 6: İdrar örneğini vermeden önce genital bölgenin sabunlanması,
-            durulanması ve kurulanması gerektiğini biliyor musunuz?</label
-          >
-          <select name="question6" id="question6" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
+      <div class="question">
+        <label for="question4">Soru 4: İdrar örneğini vermeden önce ellerin sabunla yıkanması gerektiğini biliyor
+          musunuz?</label>
+        <select name="question4" id="question4" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
 
-        <div class="question">
-          <label for="question7"
-            >Soru 7: İdrar örneğini vermeden önce genital bölgenizi sabunlayıp
-            durulayıp kuruladınız mı?</label
-          >
-          <select name="question7" id="question7" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
+      <div class="question">
+        <label for="question5">Soru 5: İdrar örneğini vermeden önce ellerinizi sabunla yıkadınız mı?</label>
+        <select name="question5" id="question5" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
 
-        <div class="question">
-          <label for="question8"
-            >Soru 8: İşeme esnasında idrarın ilk ve son kısmı dışarı atarak orta
-            akım idrarının kaba alınması gerektiğini biliyor musunuz?</label
-          >
-          <select name="question8" id="question8" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
+      <div class="question">
+        <label for="question6">Soru 6: İdrar örneğini vermeden önce genital bölgenin sabunlanması, durulanması ve
+          kurulanması gerektiğini biliyor musunuz?</label>
+        <select name="question6" id="question6" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
 
-        <div class="question">
-          <label for="question9"
-            >Soru 9: İşeme esnasında idrarın ilk ve son kısmını dışarı atarak
-            orta akım idrarını kaba aldınız mı?</label
-          >
-          <select name="question9" id="question9" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
+      <div class="question">
+        <label for="question7">Soru 7: İdrar örneğini vermeden önce genital bölgenizi sabunlayıp durulayıp kuruladınız
+          mı?</label>
+        <select name="question7" id="question7" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
 
-        <div class="question">
-          <label for="question10"
-            >Soru 10: Steril idrar kültür kabının ve kapağının iç yüzüne
-            dokunulmaması gerektiğini biliyor musunuz?</label
-          >
-          <select name="question10" id="question10" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
+      <div class="question">
+        <label for="question8">Soru 8: İşeme esnasında idrarın ilk ve son kısmı dışarı atarak orta akım idrarının kaba
+          alınması gerektiğini biliyor musunuz?</label>
+        <select name="question8" id="question8" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
 
-        <div class="question">
-          <label for="question11"
-            >Soru 11: Steril idrar kültür kabının ve kapağının iç yüzüne
-            dokundunuz mu?</label
-          >
-          <select name="question11" id="question11" required>
-            <option>Bir Seçim Yapın</option>
-            <option value="Evet">EVET</option>
-            <option value="Hayır">HAYIR</option>
-          </select>
-        </div>
-        <button type="submit">Kayıt Et</button>
-      </form>
-    </div>
-  </body>
+      <div class="question">
+        <label for="question9">Soru 9: İşeme esnasında idrarın ilk ve son kısmını dışarı atarak orta akım idrarını kaba
+          aldınız mı?</label>
+        <select name="question9" id="question9" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label for="question10">Soru 10: Steril idrar kültür kabının ve kapağının iç yüzüne dokunulmaması gerektiğini
+          biliyor musunuz?</label>
+        <select name="question10" id="question10" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label for="question11">Soru 11: Steril idrar kültür kabının ve kapağının iç yüzüne dokundunuz mu?</label>
+        <select name="question11" id="question11" required>
+          <option value="">Bir Seçim Yapın</option>
+          <option value="Evet">EVET</option>
+          <option value="Hayır">HAYIR</option>
+        </select>
+      </div>
+      <button type="submit">Kayıt Et</button>
+    </form>
+  </div>
+</body>
+
+<script>
+  var success = document.getElementById('control').innerText;
+
+  if (success == 'True') {
+    const successMessage = document.getElementById('successMessage');
+
+    successMessage.style.display = 'block';
+
+    setTimeout(function () {
+      successMessage.style.display = 'none';
+    }, 3000);
+  }
+</script>
+
 </html>

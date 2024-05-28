@@ -6,11 +6,12 @@ import os
 
 
 def poll(request):
-    return render(request, '../templates/PollApp/poll.html')
+    return render(request, '../templates/PollApp/poll.html', {'process_result': False})
 
 @csrf_exempt
 @require_POST
 def save(request):
+    process = True
     if request.method == 'POST':
         id = request.POST.get('id')
         name = request.POST.get('name')
@@ -32,7 +33,16 @@ def save(request):
         if os.path.exists(excel_path):
             workbook = openpyxl.load_workbook(excel_path)
             sheet = workbook.active
-            sheet.append([id, name, gender, old, question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11])
+
+            id_exists = False
+            for row in sheet.iter_rows(min_row=2, values_only=True):
+                if row[0] == id:
+                    id_exists = True
+                    process = False
+                    break
+
+            if not id_exists:
+                sheet.append([id, name, gender, old, question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11])
         else:
             workbook = openpyxl.Workbook()
             sheet = workbook.active
@@ -41,4 +51,4 @@ def save(request):
         
         workbook.save(excel_path)
         
-        return render(request, '../templates/PollApp/poll.html')
+        return render(request, '../templates/PollApp/poll.html', {'process_result': process})
